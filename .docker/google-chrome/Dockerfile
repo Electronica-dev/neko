@@ -4,6 +4,10 @@ FROM $BASE_IMAGE
 ARG SRC_URL="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
 
 #
+# modify preferences.json to edit meeting link
+RUN jq '.first_run_tabs[0]=${MEET_LINK}' preferences.json >> tmp.json && mv tmp.json preferences.json
+
+#
 # install google chrome
 RUN set -eux; apt-get update; \
     wget -O /tmp/google-chrome.deb "${SRC_URL}"; \
