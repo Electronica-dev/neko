@@ -83,6 +83,9 @@ RUN set -eux; \
         # Korean fonts
         fonts-wqy-microhei; \
     #
+    # install jq for json manipulation
+    apt-get install -y jq
+    #
     # create a non-root user
     groupadd --gid $USER_GID $USERNAME; \
     useradd --uid $USER_UID --gid $USERNAME --shell /bin/bash --create-home $USERNAME; \
